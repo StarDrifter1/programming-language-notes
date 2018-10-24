@@ -1,0 +1,52 @@
+Laboratory Virtual Instrument Engineering Workbench (LabVIEW)
+
+It is a system-design platform and development environment for a visual programming language from National Instruments.
+
+Written in G language.
+
+released:1986, May 2017 last release.
+=======================================================================
+------------
+Capabilities
+------------
+-graphical programming
+-self-compiling
+-large libraries
+-LabVIEW Tools Network (hosts 3rd party marketplace add-ons, some free some pay)
+-available student and home editions available
+-easy to accomplish parallel programming
+
+Note-major new versions are often released in August to coincide with National Instruments annual conference: 'NI Week'
+
+
+------
+Issues
+------
+-SLOW due to the size of the runtime environment. Not useful for small applications.
+-'G' language is non-textual
+-proprietary product of National Instruments
+-Not managed or specified by a 3rd party standards committee like most languages (see ANSI, IEEE, and ISO)
+-currently no zoom function
+
+------------------------
+Repositories & Libraries
+------------------------
+OpenG, as well as LAVA Code Repository (LAVAcr),
+serve as repositories for a wide range of Open Source
+LabVIEW applications and libraries. SourceForge has
+LabVIEW listed as one of the possible languages in which
+code can be written.
+
+VI Package Manager has become the standard package
+manager for LabVIEW libraries. It is very similar in purpose
+to Ruby’s RubyGems and Perl’s CPAN, although it
+provides a graphical user interface similar to the Synaptic
+Package Manager. VI Package Manager provides access
+to a repository of the OpenG (and other) libraries for LabVIEW.
+Tools exist to convert MathML into G code.
+
+National Instruments also offers a .NET framework compatible product for use with microsofts visual studio called: Measurement Studio
+
+
+
+
