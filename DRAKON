@@ -1,0 +1,58 @@
+DRAKON is an algorithmic visual programming language developed within the Buran space project.
+
+Name DRAKON is Russian acronym for "Дружелюбный Русский Алгоритмический [язык], Который Обеспечивает Наглядность", which translates"Friendly Russian algorithmic [language] that provides illustrativeness (or clarity)".
+
+It is to note, that DRAKON language can be used both as modelling\"markup" language (which is considered a standalone "pure DRAKON" program making) and as programming language (as part of a hybrid language). Integration of stricter, "academic" variant of a markup language into programming, which any DRAKON-(programming language used) provides, supposedly (as intended by initial philosophy of DRAKON development) adds syntactic sugar to such extent users of different text programming language can comprehend each others input into the overall project and criticize it upon necessity.
+
+Overall DRAKON Provides uniform way to represent flowcharts of any complexity.
+
+While DRAKON is designed to be a tool that allows to comprehend purposes of programs in different programming languages, for illustrative, planning and strategy purposes (mirrored to Perl programming language's primary function). Drakoncharts can also be made in spoken language with same tools.
+
+The "DRAKON editor" is popular in Russia for being used as a tool for making 'charts without programming language syntax in the medicine field in Russia as a markup language for algorthyms of performig actions in certain cases and scenarios. DRAKON allows both create a map-like guide for patients and form instructions for medical personnel.
+
+DRAKON editor takes infographics and flowchart together in a some way: for some purposes DRAKON icons can be augmented a photo inside an icon (which will be placed under icon's text).
+
+Development on DRAKON started in 1986 under the Russian Federal Space Agency and Russian Academy of Science (Keldysh Institute of Applied Mathematics).
+released: Sep, 2011
+=======================================================================
+-----------
+Capbilities
+-----------
+>>>Features
+The process of editing in DRAKON Editor is based on free drawing. The user inserts and manipulates primitive shapes such as rectangles, vertical and horizontal lines. The user experience is similar to that of business drawing tools. DRAKON Editor does not prevent the user from violating the rules of DRAKON language. It is possible, however, to perform an automated check of the visual syntax at any time.
+
+DRAKON Editor has an alternative editing algorithm, called "smart mode".[11] When in the smart mode, the user can change the visual appearance of the diagram without breaking its topology. In other words, the smart mode allows to fine-tune the layout of the diagram while keeping the underlying algorithm intact.
+
+DRAKON Editor supports the following programming languages:
+
+AutoHotKey
+C
+C++
+C#
+D
+Erlang
+Go
+Java
+JavaScript
+Lua
+Processing
+Python
+Tcl
+Verilog
+For some programming languages, DRAKON Editor generates source code for ERIL data modeling language.[12]
+
+DRAKON Editor can also generate source code for finite state machines represented with the silhouette construct of DRAKON language.
+
+For Erlang, DRAKON Editor generates boilerplate code from a visual representation of a supervision tree.
+
+Thanks to the nature of the free drawing principle, DRAKON Editor can produce other types of diagrams including class diagrams and sequence diagrams.
+
+
+
+
+-----
+Notes
+-----
+See picture of DRAKON diagram showing a hypothetical transportation of a cryo patient to moscow for example of flowchart capabilities.
+
+
