@@ -1,0 +1,3 @@
+Django is a backend framework for designing web applications. Blogs, shops, interactive sites etc.. Anything really where you want to be dynamically generating pages or handling dynamic data.
+
+Has multiple uses from a database form, to a templating system,to a multiuser administrative user interface for your class based data structures.
