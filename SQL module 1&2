@@ -1,0 +1,775 @@
+Example Table is ID, firstname, lastname, phone, city, and age.
+
+#NOTES
+------------------------------------------
+
+Databases:
+A database is a collection of data that is organized in a manner that facilitates ease of access, as well as efficient management and updating. 
+
+A database is made up of tables that store relevant information. 
+
+For example, you would use a database, if you were to create a website like YouTube, which contains a lot of information like videos, usernames, passwords, comments.
+
+
+
+Tables:
+A table stores and displays data in a structured format consisting of columns and rows that are similar to those seen in Excel spreadsheets. 
+
+Databases often contain multiple tables, each designed for a specific purpose. For example, imagine creating a database table of names and telephone numbers. 
+
+First, we would set up columns with the titles FirstName, LastName and TelephoneNumber. 
+
+Each table includes its own set of fields, based on the data it will store.
+
+
+
+Primary Keys:
+A primary key is a field in the table that uniquely identifies the table records. 
+
+The primary key's main features:
+- It must contain a unique value for each row.
+- It cannot contain NULL values.
+
+For example, our above mentioned table contains a record for each name in a phone book. The unique ID number would be a good choice for a primary key in the table, as there is always the chance for more than one person to have the same name. (i.e. farthest left column is ID#, 1...2...3...4...5..., listing names)
+
+note: 
+- Tables are limited to ONE primary key each.
+- The primary key's value must be different for each row.
+
+
+
+
+
+SQL and MySQL:
+SQL is the name of the language used in creating & accessing databases
+Once you understand what a database is, understanding SQL is easy. SQL stands for Structured Query Language.
+
+SQL is used to access and manipulate a database. 
+MySQL is a program that understands SQL.
+
+SQL can:
+- insert, update, or delete records in a database.
+- create new databases, table, stored procedures, views. 
+- retrieve data from a database, etc.
+
+note:
+SQL is an ANSI (American National Standards Institute) standard, but there are different versions of the SQL language.
+Most SQL database programs have their own proprietary extensions in addition to the SQL standard, but all of them support the major commands.
+
+
+
+-----------------------------------------------------------------------------------
+Basic SQL Commands
+-----------------------------------------------------------------------------------
+
+
+SHOW DATABASES
+
+The SQL SHOW statement displays information contained in the database and its tables. This helpful tool lets you keep track of your database contents and remind yourself about the structure of your tables.
+For example, the SHOW DATABASES command lists the databases managed by the server.
+
+Throughout this particular walkthrough & tutorial we will be using the MySQL engine and the PHPMyAdmin tool to run SQL queries. 
+
+note: 
+The easiest way to get MySQL and PHPMyAdmin is to install free tools like XAMPP or WAMP, which include all necessary installers.
+
+
+
+SHOW TABLES
+This command is used to display all of the tables in the currently selected MySQL database.
+
+For our example, create a database, my_database, with a table called customers.
+
+
+
+SHOW COLUMNS FROM
+Displays information about the columns in a given table.
+
+The following example displays the columns in our customers table:
+SHOW COLUMNS FROM customers
+
+SHOW COLUMNS displays the following values for each table column: 
+
+Field: column name
+Type: column data type
+Key: indicates whether the column is indexed
+Default: default value assigned to the column
+Extra: may contain any additional information that is available about a given column
+
+note: The columns for the customers table will also be created using the PHPMyAdmin tool.
+
+example:
+SHOW COLUMNS
+FROM customers
+
+
+
+
+SELECT Statement
+The SELECT statement is used to select data from a database.
+The result is stored in a result table, which is called the result-set.
+A query may retrieve information from selected columns or from all columns in the table. 
+To create a simple SELECT statement, specify the name(s) of the column(s) you need from the table.
+
+Syntax of the SQL SELECT Statement:
+SELECT column_list
+FROM table_name
+
+- column_list includes one or more columns from which data is retrieved
+- table-name is the name of the table from which the information is retrieved
+
+The following SQL statement selects the FirstName from the customers table:
+SELECT FirstName FROM customers
+
+
+
+Multiple Queries
+SQL allows to run multiple queries or commands at the same time. 
+The following SQL statement selects the FirstName and City columns from the customers table:
+
+SELECT FirstName FROM customers;
+SELECT City FROM customers;
+
+Note:
+Remember to end each SQL statement with a semicolon to indicate that the statement is complete and ready to be interpreted when running multiple queries.
+
+
+
+
+Selecting Multiple Columns
+As previously mentioned, the SQL SELECT statement retrieves records from tables in your SQL database. 
+You can select multiple table columns at once.
+Just list the column names, separated by commas:
+
+SELECT FirstName, LastName, City 
+FROM customers;
+
+Note:
+Do not put a comma after the last column name.
+
+
+
+Selecting ALL Columns
+To retrieve all of the information contained in your table, place an asterisk (*) sign after the SELECT command, rather than typing in each column names separately. 
+The following SQL statement selects all of the columns in the customers table:
+
+SELECT * FROM customers; 
+
+Note:
+In SQL, the asterisk means all.
+
+
+
+
+The DISTINCT Keyword
+In situations in which you have multiple duplicate records in a table, it might make more sense to return only unique records, instead of fetching the duplicates.
+The SQL DISTINCT keyword is used in conjunction with SELECT to eliminate all duplicate records and return only unique ones.
+The basic syntax of DISTINCT is as follows:
+
+SELECT DISTINCT column_name1, column_name2
+FROM table_name;
+
+Note that there are duplicate City names in the example table. The following SQL statement selects only distinct values from the City column:
+SELECT DISTINCT City FROM customers; 
+
+THIS REMOVES DUPLICATE ENTRIES AND GIVES YOU THE DISTINCT READ-OUT or SOMETHING LIKE THE ABSOLUTE VALUE OF THE TOTAL COLUMN ENTRIES.
+IT DISREGARDS DUPLICATES AND WALLLAAAAAA. AWESOME.
+
+
+
+
+The LIMIT Keyword
+By default, all results that satisfy the conditions specified in the SQL statement are returned. However, sometimes we need to retrieve just a subset of records. 
+In MySQL, this is accomplished by using the LIMIT keyword. 
+The syntax for LIMIT is as follows:
+
+SELECT column list
+FROM table_name
+LIMIT [number of records];
+
+For example, we can retrieve the first five records from the customers table.
+SELECT ID, FirstName, LastName, City
+FROM customers LIMIT 5;
+
+
+ALSO:
+You can instead pick up a set of records from a particular limited group (previous example 1-5 here).
+In the following code, we pick up four records, starting from the third position (so 3-7. The 4 denotes when to stop here):
+SELECT ID, FirstName, LastName, City
+ FROM customers LIMIT 3, 4;
+
+Also keep in mind that SQL produces results starting from ID number four, and not three here because MySQL starts counting from zero, meaning that the offset of the first row is 0, not 1.
+
+
+Another example of above:
+Use LIMIT to select the ''id'' and ''name'' columns from ''customers''. Show 12 results, starting from the fifth.
+
+SELECT  id, name
+FROM customers
+LIMIT 4 , 12;
+
+
+
+
+
+Fully Qualified Names
+In SQL, you can provide the table name prior to the column name, by separating them with a dot.
+The following statements are equivalent:
+SELECT City FROM customers;
+
+SELECT customers.City FROM customers;
+
+Note!!:
+The term for the above-mentioned syntax is called the "fully qualified name" of that column.
+********This form of writing is especially useful when working with multiple tables that may share the same column names.
+
+Another Example:
+Fill in the blanks to select the ''address'' from ''customers'', using the fully qualified name for the ''address'' column.
+
+SELECT customers.address
+FROM customers;
+
+
+
+
+Order By
+ORDER BY is used with SELECT to sort the returned data. 
+The following example sorts our customers table by the FirstName column:
+
+SELECT * FROM customers
+ORDER BY FirstName;
+
+The table result will show the rows are ordered alphabetically by the FirstName column.
+
+Note:
+By default, the ORDER BY keyword sorts the results in ascending order.
+
+
+second example:
+Build a query to select ''name'' and ''city'' from the ''people'' table, and order by the ''id''.
+
+SELECT name, city  
+FROM people  
+ORDER BY  id;
+
+
+
+Sorting Multiple Columns
+ORDER BY can sort retrieved data by multiple columns. When using ORDER BY with more than one column, separate the list of columns to follow ORDER BY with commas. 
+(insert table with customer data and age here) now-this shows the customers table. 
+Using the below code:
+
+To order by LastName and Age:
+SELECT * FROM customers 
+ORDER BY LastName, Age;
+
+This ORDER BY statement returns table in lastname, the age precedence and order.
+
+If for example we have two lastnames of Smith, they will be ordered by the Age column in ascending order.
+The ORDER BY command starts ordering in the same sequence as the columns. It will order by the first column listed, then by the second, and so on. 
+NOT LEFT TO RIGHT, but by how it is listed in the code.
+
+
+
+
+
+
+Other example problems:
+Drag and drop from the options below to select distinct names from the ''students'' table, ordered by name.
+
+SELECT DISTINCT  name 
+FROM  students
+ORDER BY  name;
+
+
+
+
+
+
+
+
+
+
+
+
+OTHER NOTES ON SYNTAX:
+------------------------------------------------------------------------------------
+SQL is NOT case sensitive. 
+
+The following statements are equivalent and will produce the same result:
+select City from customers;
+SELECT City FROM customers;
+sElEct City From customers;
+
+However, it is common/standard practice to write all SQL commands in upper-case!
+
+Rules:
+A single SQL statement can be placed on one or more text lines. In addition, multiple SQL statements can be combined on a single text line. 
+
+White spaces and multiple lines are ignored in SQL. 
+For example, the following query is absolutely correct.
+
+<>
+SELECT        City
+
+
+FROM customers;
+</>
+
+However, it is recommended to avoid unnecessary white spaces and lines.
+Combined with proper spacing and indenting, breaking up the commands into logical lines will make your SQL statements much easier to read and maintain.
+
+
+In SQL, the asterisk means all, and when seperating multiple inqueries with a comma you do not put a comma after the last column name.
+
+
+Comments Within SQL Statements
+Comments can make your application easier for you to read and maintain. For example, you can include a comment in a statement that describes the purpose of the statement within your application. With the exception of hints, comments within SQL statements do not affect the statement execution. Please refer to "Hints " on using this particular form of comment.
+
+A comment can appear between any keywords, parameters, or punctuation marks in a statement. You can include a comment in a statement in two ways:
+
+Begin the comment with a slash and an asterisk (/*). Proceed with the text of the comment. This text can span multiple lines. End the comment with an asterisk and a slash (*/). The opening and terminating characters need not be separated from the text by a space or a line break.
+
+Begin the comment with -- (two hyphens). Proceed with the text of the comment. This text cannot extend to a new line. End the comment with a line break.
+
+Some of the tools used to enter SQL have additional restrictions. For example, if you are using SQL*Plus, by default you cannot have a blank line inside a multiline comment. For more information, please refer to the documentation for the tool you use as an interface to the database.
+
+A SQL statement can contain multiple comments of both styles. The text of a comment can contain any printable characters in your database character set.
+
+
+
+
+
+
+
+
+
+
+
+*******************************************************************************************************************************
+
+
+
+SQL module 2 - FILTERING, FUNCTIONS, AND SUBQUERIES
+-----------------------------------------------------------------------------
+
+The WHERE Statement
+--The WHERE clause is used to extract only those records that fulfill a specified criterion.
+--The syntax for the WHERE clause:
+
+SELECT column_list 
+FROM table_name
+WHERE condition;
+
+--to SELECT a specific record from the example table we used in module 1:
+
+SELECT * FROM customers
+WHERE ID = 7;
+
+Example 2:
+--Drag and drop from the options below to select the name of the student whose id is equal to 23.
+
+SELECT id, name 
+FROM students 
+WHERE  id=23;
+
+
+
+
+
+SQL Operators
+--Comparison Operators and Logical Operators are used in the WHERE clause to filter the data to be selected.
+--The following comparison operators can be used in the WHERE clause:
+
+Operators
+=, !=, >, <, >=, <=, BETWEEN.
+
+--The BETWEEN operator will denote an inclusive range for the search.
+--For example, we can display all customers names listed in our table, with the exception of the one with ID 5.
+
+SELECT * FROM customers
+WHERE ID != 5;
+
+--The output should show all records, but the one with ID=5 is excluded from the list.
+
+Example 2:
+--Fill in the blank to select student names whose id is greater than or equal to 12.
+
+SELECT id, name 
+FROM students 
+WHERE id >= 12;
+
+
+
+
+
+The BETWEEN Operator
+--The BETWEEN operator selects values within a range. The first value must be lower bound and the second value, the upper bound.
+--The syntax for the BETWEEN clause is as follows:
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+
+
+--The following SQL statement selects all records with IDs that fall between 3 and 7:
+
+SELECT * FROM customers 
+WHERE ID BETWEEN 3 AND 7;
+
+
+Example 2:
+--Drag and drop from the options below to build a query to select the names of students whose ids are between 13 and 45.
+
+SELECT id, name
+FROM  students 
+WHERE  id 
+BETWEEN  13  AND 45;
+
+
+
+
+Text Values
+--When working with text columns, surround any text that appears in the statement with single quotation marks (').
+--The following SQL statement selects all records in which the City is equal to 'New York':
+
+SELECT ID, FirstName, LastName, City 
+FROM customers
+WHERE City = 'New York';
+
+
+
+
+
+
+
+Logical Operators & Functions
+--Logical operators can be used to combine two Boolean values and return a result of true, false, or null.
+--The following operators can be used:
+
+Operators
+AND, OR, IN, NOT, as well as combinations (AND/OR, NOT/IN, etc).
+
+Functions
+CONCAT, UPPER, LOWER, SQRT, AVG, 
+
+--When retrieving data using a SELECT statement, use logical operators in the WHERE clause to combine multiple conditions.
+--If you want to select rows that satisfy all of the given conditions, use the logical operator, AND.
+
+
+
+
+
+
+AND OPERATOR
+--To find the names of the customers between 30 to 40 years of age, set up the query as seen here:
+
+SELECT ID, FirstName, LastName, Age
+FROM customers
+WHERE Age >= 30 AND Age <= 40;
+
+--This results in an output of people between the ages of 30 and 40 only.
+--You can combine as many conditions as needed to return the desired results.
+
+
+
+
+
+OR OPERATOR
+--If you want to select rows that satisfy at least one of the given conditions, you can use the logical OR operator.
+--For example, if you want to find the customers who live either in New York or Chicago, the query would look like this:
+
+SELECT * FROM customers 
+WHERE City = 'New York' OR City = 'Chicago';
+
+Example 2:
+--Drag and drop from the options below to select customers who live either in CA or in Boston.
+
+SELECT name, state, city 
+FROM customers 
+WHERE  state = 'CA' 
+OR  city = 'Boston';
+
+
+Combining AND & OR
+--The SQL AND and OR conditions may be combined to test multiple conditions in a query. 
+--These two operators are called conjunctive operators.
+--When combining these conditions, it is important to use parentheses, so that the order to evaluate each condition is known.
+--The statement below selects all customers from the city "New York" AND with the age equal to "30" OR “35":
+
+SELECT * FROM customers
+WHERE City = 'New York'
+AND (Age=30 OR Age=35);
+
+--Note:
+--You can nest as many conditions as you need.
+
+
+
+
+
+IN OPERATOR
+--The IN operator is used when you want to compare a column with more than one value. 
+--For example, you might need to select all customers from New York, Los Angeles, and Chicago.
+--With the OR condition, your SQL would look like this:
+
+SELECT * FROM customers 
+WHERE City = 'New York'
+OR City = 'Los Angeles'
+OR City = 'Chicago';
+
+Example 2
+--Drag and drop from the options below to select users from NY and CA:
+
+SELECT * FROM  users
+WHERE  state = 'NY'
+OR  state = 'CA'
+
+--Or, You can achieve the same result with a single IN condition, instead of the multiple OR conditions:
+
+SELECT * FROM customers 
+WHERE City IN ('New York', 'Los Angeles', 'Chicago');
+
+--This should give the same result.
+--Note the use of parentheses in the syntax.
+
+Example 2,
+--Select customers from NY, CA, or NC, using the IN statement.
+
+SELECT name, state 
+FROM  customers 
+WHERE state IN ('CA', 'NY', 'NC') ;
+
+
+
+
+The NOT IN Operator
+--The NOT IN operator allows you to exclude a list of specific values from the result set. 
+--If we add the NOT keyword before IN in our previous query, customers living in those cities will be excluded:
+
+SELECT * FROM customers 
+WHERE City NOT IN ('New York', 'Los Angeles', 'Chicago');
+
+
+
+
+The CONCAT Function
+--The CONCAT function is used to concatenate two or more text values and returns the concatenating string.
+--Let's concatenate the FirstName with the City, separating them with a comma:
+
+SELECT CONCAT(FirstName, ', ' , City) FROM customers;
+
+--The result yields a column where the firstname and city are placed together, seperated by a comma.
+
+
+
+
+
+The AS Keyword
+--A concatenation results in a new column. The default column name will be the CONCAT function.
+--You can assign a custom name to the resulting column using the AS keyword:
+
+SELECT CONCAT(FirstName,', ', City) AS new_column 
+FROM customers;
+
+--Changes column name.
+
+
+
+
+
+Arithmetic Operators
+--Arithmetic operators perform arithmetical operations on numeric operands. The Arithmetic operators include addition (+), subtraction (-), multiplication (*) and division (/). 
+--Example table will show employee ID (primary key), names, and salaries.
+--Lets give everyone a $500 raise.
+--Add 500 to each employee's salary and selects the result:
+
+SELECT ID, FirstName, LastName, Salary+500 AS Salary
+FROM employees;
+
+--Should add 500 to just the salary column.
+
+
+Example 2:
+--Drag and drop from the options below to select concatenated ''city'' and ''state'' columns, represented with a new custom column named ''new_address''.
+
+SELECT CONCAT  (city, ', ', state)
+AS  new_address
+FROM customers;
+
+
+
+
+
+
+The UPPER & LOWER Function
+--The UPPER function converts all letters in the specified string to uppercase. 
+--The LOWER function converts the string to lowercase.
+--The following SQL query selects all LastNames as uppercase:
+
+SELECT FirstName, UPPER(LastName) AS LastName 
+FROM employees;
+
+--If there are characters in the string that are not letters, this function will have no effect on them.
+--LOWER fx works the same way.
+
+
+
+
+
+SQRT and AVG
+--The SQRT function returns the square root of given value in the argument.
+--Let's calculate the square root of each Salary:
+
+SELECT Salary, SQRT(Salary) 
+FROM employees;
+
+--Similarly, the AVG function returns the average value of a numeric column:
+
+SELECT AVG(Salary) FROM employees;
+
+
+Example 2
+--Drag and drop from the options below to select the average cost from the ''items'' table.
+
+SELECT AVG (cost) 
+FROM  items;
+
+
+
+
+The SUM Function
+--The SUM function is used to calculate the sum for a column's values.
+--For example, to get the sum of all of the salaries in an employee table, our SQL query would look like this:
+
+SELECT SUM(Salary) FROM employees;
+
+
+
+
+
+
+
+
+Order of output & Subqueries
+--A subquery is a query within another query. 
+--Let's consider an example. We might need the list of all employees whose salaries are greater than the average.
+--First, calculate the average:
+
+SELECT AVG(Salary) FROM employees;
+
+--As we already know the average, we can use a simple WHERE to list the salaries that are greater than that number.
+
+SELECT FirstName, Salary FROM employees 
+WHERE  Salary > 3100
+ORDER BY Salary DESC;
+
+--The DESC keyword sorts results in descending order. 
+--Similarly, ASC sorts the results in ascending order.
+
+Example 2
+--Select all items from the ''items'' table for which cost is greater than 463. 
+--Order the result by cost in descending order.
+
+SELECT * FROM items 
+WHERE  cost > 463 
+ORDER BY  cost DESC
+
+--A single subquery will return the same result more easily.
+
+SELECT FirstName, Salary FROM employees 
+WHERE  Salary > (SELECT AVG(Salary) FROM employees) 
+ORDER BY Salary DESC;
+
+--Enclose the subquery in parentheses. 
+--Also, note that there is no semicolon at the end of the subquery, as it is part of our single query.
+
+Example 2
+--Drag and drop from the options below to select all items from the ''items'' table for which the cost is greater than the average of costs. 
+--Use a subquery to calculate the average cost.
+
+SELECT * FROM items 
+WHERE  cost > 
+(SELECT AVG (cost) 
+FROM items )
+
+
+
+
+The LIKE Operator
+--The LIKE keyword is useful when specifying a search condition within your WHERE clause.
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name LIKE pattern;
+
+--SQL pattern matching enables you to use "_" to match any single character and "%" to match an arbitrary number of characters (including zero characters).
+--For example, to select employees whose FirstNames begin with the letter A, you would use the following query:
+
+SELECT * FROM employees 
+WHERE FirstName LIKE 'A%';
+
+
+--As another example, the following SQL query selects all employees with a LastName ending with the letter "s":
+
+SELECT * FROM employees 
+WHERE LastName LIKE '%s';
+
+--The % wildcard can be used multiple times within the same pattern.
+
+Example 2
+--Search ''boxes'' in the ''name'' column of the ''items'' table.
+
+SELECT seller_id FROM items
+WHERE name LIKE  '%boxes'
+
+
+
+
+
+The MIN Function
+--The MIN function is used to return the minimum value of an expression in a SELECT statement.
+--For example, you might wish to know the minimum salary among the employees.
+
+SELECT MIN(Salary) AS Salary FROM employees;
+
+--All of the SQL functions can be combined together to create a single expression.
+
+Example 2
+--complete the statement, which selects ''name'' and minimum of the "cost'' from ''items'', filtering by name and seller id.
+
+SELECT name, MIN (cost) 
+FROM items WHERE name 
+LIKE  '%boxes of frogs' AND 
+seller_id IN  (68, 6, 18)
+
+Example 3
+--Fill in the blanks to select all values from the ''students'' table in which the field ''university'' equals ''MIT''.
+
+SELECT * FROM students
+WHERE university = 'MIT';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
